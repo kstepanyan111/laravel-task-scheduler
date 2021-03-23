@@ -14,9 +14,13 @@ use App\Http\Controllers\Auth\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::post('add', [MailController::class, 'add']);
+Route::post('cron', [MailController::class, 'cron']);
 Route::post('sendmail', [MailController::class, 'sendmail']);
 Route::get('/', [MailController::class, 'sendmailpage']);
+Route::post('operator', [MailController::class, 'operator']);
+Route::post('/type', [MailController::class, 'type']);
+
 
 
 

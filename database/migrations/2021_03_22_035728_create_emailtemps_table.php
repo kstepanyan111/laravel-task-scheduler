@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaypesTable extends Migration
+class CreateEmailtempsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTaypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('taypes', function (Blueprint $table) {
+        Schema::create('emailtemps', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('taype');
+            $table->string('id_tamps');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateTaypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taypes');
+        Schema::dropIfExists('emailtemps');
     }
 }
