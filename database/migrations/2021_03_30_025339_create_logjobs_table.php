@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablesTable extends Migration
+class CreateLogjobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tables', function (Blueprint $table) {
+        Schema::create('logjobs', function (Blueprint $table) {
             $table->id();
-            $table->string('table');
-            $table->string('tablefild');
-            $table->string('type');
+            $table->string('from');
+            $table->string('to');
+            $table->longText('date');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateTablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tables');
+        Schema::dropIfExists('logjobs');
     }
 }

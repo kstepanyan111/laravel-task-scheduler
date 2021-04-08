@@ -44,12 +44,22 @@ public function sendmailpage()
     $email = Email::all();
     $type = Type::all();
     $emailtemps =Emailtemps::all();
-    $operator =Operator::all();
-    return view('welcome',['email'=>$email,'operator'=>$operator,'emailtemps'=>$emailtemps]);
+    $db =Table::distinct()->get(['table']);
+
+    return view('welcome',['email'=>$email,'emailtemps'=>$emailtemps,'db'=>$db]);
 }
+public function db(Request $data)
+{
+    $db =Table::where('table',$data['value'])->get();
+
+   foreach ($db as  $val) {
+       echo ' <option value="'.$val->tablefild.'">'.$val->tablefild.'</option>';
+   }
+}
+
 public function operator(Request $data)
-{    
-   $operator =Operator::where('dbname',$data['value'])->get();
+{    $db =Table::where('tablefild',$data['value'])->first();
+    $operator =Operator::where('type',$db->type)->get();
    foreach ($operator as  $val) {
        echo ' <option value="'.$val->operator.'">'.$val->operator.'</option>';
    }
@@ -57,7 +67,9 @@ public function operator(Request $data)
 
 public function cron()
 {
-   
+
+
+
 
 }
 

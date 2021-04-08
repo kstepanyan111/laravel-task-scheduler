@@ -28,7 +28,7 @@ class OfferMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from ItSolutionStuff.com')
-            ->view('myTestMail');
+        return $this->subject('Sent Mail')
+            ->view('home');
     }
 }

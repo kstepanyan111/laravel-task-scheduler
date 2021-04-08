@@ -19,6 +19,7 @@ Route::post('cron', [MailController::class, 'cron']);
 Route::post('sendmail', [MailController::class, 'sendmail']);
 Route::get('/', [MailController::class, 'sendmailpage']);
 Route::post('operator', [MailController::class, 'operator']);
+Route::post('db', [MailController::class, 'db']);
 Route::post('/type', [MailController::class, 'type']);
 
 

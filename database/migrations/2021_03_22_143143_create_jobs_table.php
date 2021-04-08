@@ -17,7 +17,7 @@ class CreateJobsTable extends Migration
             $table->id();
             $table->string('frome');
             $table->string('to');
-            $table->string('job');
+            $table->longText('job');
             $table->string('tamp');
             $table->string('status');
             $table->timestamps();

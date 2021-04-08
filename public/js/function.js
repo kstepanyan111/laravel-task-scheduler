@@ -89,12 +89,25 @@
       }}});
    }
  }
+ function db($value,$id){
+   var value = $value;
+   var id =$id;
+   if(value == "DB filde name"){}else{
+    $.ajaxSetup({
+     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});$.ajax({type:'POST',url:"db",data:{value:value,id:id},success: function(data){
+       if(data != null){
+        document.getElementById($id+"dbname").innerHTML = data;
+
+      }}});
+   }
+ }
 
  function savetage(){
    var p = document.getElementById("number").value;
    var data = [];
    for(var i=1;i<4;i++){
-    var db = document.getElementById(i+"dbname").value;
+     var db = document.getElementById(i+"db").value;
+    var dbname = document.getElementById(i+"dbname").value;
     var options = document.getElementById(i+"operator").value;
     var value = document.getElementById("velue"+i).value;
     if(i<3){
@@ -110,7 +123,7 @@
      var sentto = document.getElementById("exampleFormControlSelect2").value;
      var tamp = document.getElementById("inputState").value;
      var status = document.getElementById("flexCheckDefault").value;
-     var obj =  {"db":db,"options":options,"value":value,"job":job,"sentto":sentto,"sentfrom":sentfrom,"tamp":tamp,"status":status}
+     var obj =  {"db":db,"dbname":dbname,"options":options,"value":value,"job":job,"sentto":sentto,"sentfrom":sentfrom,"tamp":tamp,"status":status}
      data.push(obj);
    }
    var myJSON = JSON.stringify(data);
@@ -120,7 +133,6 @@
         if(data == "good"){
           location.reload();
         }
-
       }}});
  }
 

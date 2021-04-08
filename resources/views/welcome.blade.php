@@ -73,12 +73,18 @@
           <div class="form-group col-md-1">
             <input type="text" class="form-control" id="{{$i}}" value="{{$i}}" disabled style="border-radius: 33px;width: 35px;">
           </div>
-          <div class="form-group col-md-4">
-            <select onclick="operator(this.value,'{{$i}}')"  id="{{$i}}dbname" class="form-control">
-              <option selected>DB filde name</option>
-              @foreach($operator as $mail)
-              <option onclick="operator(this.value,'{{$i}}')" value="{{$mail->dbname}}">{{$mail->dbname}}</option>
+          <div class="form-group col-md-2">
+            <select onclick="db(this.value,'{{$i}}')"  id="{{$i}}db" class="form-control">
+              <option selected>Table name</option>
+              @foreach($db as $name)
+              <option onclick="db(this.value,'{{$i}}')" value="{{$name->table}}">{{$name->table}}</option>
               @endforeach
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <select onclick="operator(this.value,'{{$i}}')"  id="{{$i}}dbname" class="form-control">
+              <option selected>Table filde  name</option>
+              <option selected>Table filde  name...</option>
             </select>
           </div>
           <div class="form-group col-md-2">
@@ -161,79 +167,84 @@
               <div class="form-group col-md-1">
                 <input type="text" class="form-control" id="{{$i}}" value="{{$i}}" disabled style="border-radius: 33px;width: 35px;">
               </div>
-              <div class="form-group col-md-4">
-                <select onclick="operator(this.value,'{{$i}}')" id="{{$i}}dbname" class="form-control">
-                 <option selected>DB filde name</option>
-                 @foreach($operator as $mail)
-                 <option onclick="operator(this.value,'{{$i}}')" value="{{$mail->dbname}}">{{$mail->dbname}}</option>
-                 @endforeach
-               </select>
-             </div>
-             <div class="form-group col-md-2">
-              <select id="{{$i}}operator" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <input type="text" class="form-control" id="velue{{$i}}">
-            </div>
-            <div class="form-group col-md-1">
-             <input type="image" src="img/plus.png" value="{{$i}}" onclick="add(this.value)"  id="functionadd{{$i}}" alt="Submit" width="30" height="30">
-             <input type="image" src="img/minus.png" value="{{$i}}" onclick="remove(this.value)" id="functionremove{{$i}}" alt="Submit" width="30" height="30"> 
-           </div>
-         </div>
-       </div>
-       <div class="form-group" id="divtwo{{$i}}">
-        <p><div class="switch-field{{$i}}">
-          <input type="radio" id="radio-one{{$i}}" name="switch-one{{$i}}" value="and" checked/>
-          <label for="radio-one{{$i}}">AND</label>
-          <span style="margin-top: 0.5%;">|</span>
-          <input type="radio" id="radio-two{{$i}}" name="switch-one{{$i}}" value="or" />
-          <label for="radio-two{{$i}}">OR</label>
-        </div></p>
-      </div>
-      @endif
-      @endfor
-      <div id="add">
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-auto">
-                <label for="inputPassword6" class="col-form-label">Send this Natification:</label>
-              </div>
               <div class="form-group col-md-2">
-                <select id="inputState" class="form-control">
-                  <option selected>DB filde name</option>
-                  @foreach($emailtemps as $mail)
-                  <option  value="{{$mail->id_tamps}}">{{$mail->id_tamps}}</option>
+                <select onclick="db(this.value,'{{$i}}')"  id="{{$i}}db" class="form-control">
+                  <option selected>Table name</option>
+                  @foreach($db as $name)
+                  <option onclick="db(this.value,'{{$i}}')" value="{{$name->table}}">{{$name->table}}</option>
                   @endforeach
                 </select>
               </div>
-            </div>
-          </div>
+              <div class="form-group col-md-2">
+                <select onclick="operator(this.value,'{{$i}}')"  id="{{$i}}dbname" class="form-control">
+                  <option selected>Table filde  name</option>
+                  <option selected>Table filde  name...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <select id="{{$i}}operator" class="form-control">
+                   <option selected>Operator...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="velue{{$i}}">
+              </div>
+              <div class="form-group col-md-1">
+               <input type="image" src="img/plus.png" value="{{$i}}" onclick="add(this.value)"  id="functionadd{{$i}}" alt="Submit" width="30" height="30">
+               <input type="image" src="img/minus.png" value="{{$i}}" onclick="remove(this.value)" id="functionremove{{$i}}" alt="Submit" width="30" height="30"> 
+             </div>
+           </div>
+         </div>
+         <div class="form-group" id="divtwo{{$i}}">
+          <p><div class="switch-field{{$i}}">
+            <input type="radio" id="radio-one{{$i}}" name="switch-one{{$i}}" value="and" checked/>
+            <label for="radio-one{{$i}}">AND</label>
+            <span style="margin-top: 0.5%;">|</span>
+            <input type="radio" id="radio-two{{$i}}" name="switch-one{{$i}}" value="or" />
+            <label for="radio-two{{$i}}">OR</label>
+          </div></p>
+        </div>
+        @endif
+        @endfor
+        <div id="add">
+        </div>
+        <div class="row">
           <div class="col">
             <div class="form-group">
               <div class="form-row">
-                <div class="form-group col-md-4">
-                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="active" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Activate this Notification
-                  </label>
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">Send this Natification:</label>
+                </div>
+                <div class="form-group col-md-2">
+                  <select id="inputState" class="form-control">
+                    <option selected>Table filde  name</option>
+                    @foreach($emailtemps as $mail)
+                    <option  value="{{$mail->id_tamps}}">{{$mail->id_tamps}}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
-              <div class="form-group col-md-4">          
-              </div>
-              <div class="form-group col-md-4">
-                <a href="/"><img src="img/remove.png" style="width: 40px;"></a><button onclick="savetage()" type="button" style="border-radius: 7px;width: 93px;height: 40px;">Save</button>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                   <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="active" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Activate this Notification
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">          
+                </div>
+                <div class="form-group col-md-4">
+                  <a href="/"><img src="img/remove.png" style="width: 40px;"></a><button onclick="savetage()" type="button" style="border-radius: 7px;width: 93px;height: 40px;">Save</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      </body>
-      </html>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        </body>
+        </html>
